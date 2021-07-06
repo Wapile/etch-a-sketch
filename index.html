@@ -6,17 +6,13 @@
 
     <title>Etch-A-Sketch</title>
 
-    <style>
-
-    </style>
-
 </head>
 
 
 
 <body>
 
-    <div id="container">
+    <div class="container">
 
     </div>
 
@@ -24,22 +20,54 @@
 
 
 
+
 <script>
 
-const container = document.querySelector('#container');
+const container = document.querySelector('.container');
+let grid;
 
 // const grid = document.createElement('div');
 // container.appendChild(grid);
 
 
 for (x = 0; x < 256; x++) {
-    const grid = document.createElement('div');
+    grid = document.createElement('div');
     grid.className = "box";
+    // grid.textContent = ;
     container.appendChild(grid);
 }
 
+// function hoverChange() {
+//     grid.className = "boxHover";
+// }
+
+document.querySelectorAll('.box').forEach(div => {
+    div.addEventListener('mouseover', event => {
+        div.className = "boxHover";
+    })
+})
 
 </script>
+
+<style>
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(16, 30px);
+        grid-template-rows: repeat(16, 30px);
+        grid-gap: 1px;
+    }
+
+    .box {
+        background: blue;
+        min-height: 1px;
+    }
+
+    .boxHover {
+        background: red;
+    }
+
+</style>
 
 
 </html>
