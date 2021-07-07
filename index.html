@@ -48,8 +48,6 @@ function reviseGrid () {
         } 
         alert("Please enter a number between 1 and 100");
     }
-    // row = prompt("How many rows?");
-    // column = prompt("How many columns");
     boxTotal = row * column;
     for (x = 0; x < boxTotal; x++) {
         grid = document.createElement('div');
@@ -59,11 +57,16 @@ function reviseGrid () {
     container.setAttribute('style', `grid-template-columns: repeat(${column}, auto); grid-template-rows: repeat(${row}, auto);`);
 };
 
+function randomColor() {
+    return Math.floor(Math.random() * 255);
+}
+
 // secondary hover function for custom grid
 function gridHover() {
     document.querySelectorAll('.box').forEach(div => {
     div.addEventListener('mouseover', event => {
-        div.className = "boxHover";
+        // div.className = "boxHover";
+        div.setAttribute('style', `background: rgb(${randomColor()},${randomColor()},${randomColor()})`);
     })
 });
 };
@@ -72,14 +75,14 @@ function gridHover() {
 for (x = 0; x < boxTotal; x++) {
     grid = document.createElement('div');
     grid.className = "box";
-    // grid.textContent = ;
     container.appendChild(grid);
 };
 
 // initial hover 
 document.querySelectorAll('.box').forEach(div => {
     div.addEventListener('mouseover', event => {
-        div.className = "boxHover";
+        // div.className = "boxHover";
+        div.setAttribute('style', `background: rgb(${randomColor()},${randomColor()},${randomColor()})`);
     })
 });
 
