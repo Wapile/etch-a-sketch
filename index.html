@@ -65,8 +65,8 @@ function randomColor() {
 function gridHover() {
     document.querySelectorAll('.box').forEach(div => {
     div.addEventListener('mouseover', event => {
-        // div.className = "boxHover";
-        div.setAttribute('style', `background: rgb(${randomColor()},${randomColor()},${randomColor()})`);
+        // div.className = "boxHover"; // standard hover to red
+        div.setAttribute('style', `background: rgb(${randomColor()},${randomColor()},${randomColor()})`); // randomized color on hover
     })
 });
 };
@@ -81,8 +81,8 @@ for (x = 0; x < boxTotal; x++) {
 // initial hover 
 document.querySelectorAll('.box').forEach(div => {
     div.addEventListener('mouseover', event => {
-        // div.className = "boxHover";
-        div.setAttribute('style', `background: rgb(${randomColor()},${randomColor()},${randomColor()})`);
+        // div.className = "boxHover"; // standard hover to red
+        div.setAttribute('style', `background: rgb(${randomColor()},${randomColor()},${randomColor()})`); // randomized color on hover    
     })
 });
 
@@ -110,7 +110,7 @@ butn.addEventListener('click', event => {
     }
 
     .box {
-        background: blue;
+        background: white;
         min-height: 1px;
     }
 
