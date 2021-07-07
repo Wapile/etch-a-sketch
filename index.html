@@ -24,6 +24,7 @@
 
 <script>
 
+// variables
 const container = document.querySelector('.container');
 const butn = document.querySelector(".button");
 let grid;
@@ -31,25 +32,24 @@ let row = 16;
 let column = 16;
 let boxTotal = row * column;
 
-
-for (x = 0; x < boxTotal; x++) {
-    grid = document.createElement('div');
-    grid.className = "box";
-    // grid.textContent = ;
-    container.appendChild(grid);
-};
-
-
-document.querySelectorAll('.box').forEach(div => {
-    div.addEventListener('mouseover', event => {
-        div.className = "boxHover";
-    })
-});
-
-
+// custom grid function - triggered by button
 function reviseGrid () {
-    row = prompt("How many rows?");
-    column = prompt("How many columns");
+    while(true) {
+        row = prompt("How many rows? (Enter number 100 or less)");
+        if (row <= 100) {
+            break;
+        } 
+        alert("Please enter a number between 1 and 100");
+    }
+    while(true) {
+        column = prompt("How many columns? (Enter number 100 or less)");
+        if (row <= 100) {
+            break;
+        } 
+        alert("Please enter a number between 1 and 100");
+    }
+    // row = prompt("How many rows?");
+    // column = prompt("How many columns");
     boxTotal = row * column;
     for (x = 0; x < boxTotal; x++) {
         grid = document.createElement('div');
@@ -59,7 +59,7 @@ function reviseGrid () {
     container.setAttribute('style', `grid-template-columns: repeat(${column}, auto); grid-template-rows: repeat(${row}, auto);`);
 };
 
-
+// secondary hover function for custom grid
 function gridHover() {
     document.querySelectorAll('.box').forEach(div => {
     div.addEventListener('mouseover', event => {
@@ -68,8 +68,22 @@ function gridHover() {
 });
 };
 
+// initial 16x16 grid
+for (x = 0; x < boxTotal; x++) {
+    grid = document.createElement('div');
+    grid.className = "box";
+    // grid.textContent = ;
+    container.appendChild(grid);
+};
 
+// initial hover 
+document.querySelectorAll('.box').forEach(div => {
+    div.addEventListener('mouseover', event => {
+        div.className = "boxHover";
+    })
+});
 
+// button trigger calling above functions
 butn.addEventListener('click', event => {
     container.querySelectorAll('div').forEach(div => {
         div.remove();
@@ -78,9 +92,8 @@ butn.addEventListener('click', event => {
     gridHover();
 });
 
-
-
 </script>
+
 
 <style>
 
