@@ -27,21 +27,18 @@
 const container = document.querySelector('.container');
 const butn = document.querySelector(".button");
 let grid;
+let row = 16;
+let column = 16;
+let boxTotal = row * column;
 
-// const grid = document.createElement('div');
-// container.appendChild(grid);
 
-
-for (x = 0; x < 256; x++) {
+for (x = 0; x < boxTotal; x++) {
     grid = document.createElement('div');
     grid.className = "box";
     // grid.textContent = ;
     container.appendChild(grid);
-}
+};
 
-// function hoverChange() {
-//     grid.className = "boxHover";
-// }
 
 document.querySelectorAll('.box').forEach(div => {
     div.addEventListener('mouseover', event => {
@@ -49,16 +46,39 @@ document.querySelectorAll('.box').forEach(div => {
     })
 });
 
-document.querySelectorAll('.box').forEach(div => {
-    butn.addEventListener('click', event => {
-        div.className = "box";
+
+function reviseGrid () {
+    row = prompt("How many rows?");
+    column = prompt("How many columns");
+    boxTotal = row * column;
+    for (x = 0; x < boxTotal; x++) {
+        grid = document.createElement('div');
+        grid.className = "box";
+        container.appendChild(grid);
+    }
+    container.setAttribute('style', `grid-template-columns: repeat(${column}, auto); grid-template-rows: repeat(${row}, auto);`);
+};
+
+
+function gridHover() {
+    document.querySelectorAll('.box').forEach(div => {
+    div.addEventListener('mouseover', event => {
+        div.className = "boxHover";
     })
+});
+};
+
+
+
+butn.addEventListener('click', event => {
+    container.querySelectorAll('div').forEach(div => {
+        div.remove();
+    });
+    reviseGrid(row, column);
+    gridHover();
 });
 
 
-// butn.addEventListener("click", () => {
-//     grid.className = "box";
-// })
 
 </script>
 
@@ -66,9 +86,11 @@ document.querySelectorAll('.box').forEach(div => {
 
     .container {
         display: grid;
-        grid-template-columns: repeat(16, 30px);
-        grid-template-rows: repeat(16, 30px);
-        grid-gap: 1px;
+        width: 650px;
+        height: 650px;
+        grid-template-columns: repeat(16, auto);
+        grid-template-rows: repeat(16, auto);
+        /* grid-gap: 1px; */
     }
 
     .box {
